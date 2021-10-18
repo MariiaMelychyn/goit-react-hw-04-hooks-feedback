@@ -1,37 +1,24 @@
 import PropTypes from 'prop-types';
 import s from './Statistics.module.css';
-import Notification from '../Notification/Notification';
 
-const Statistics = ({
-     good,
-     neutral,
-      bad, 
-      total, 
-      positiveFeedbackPercentage,
-    }) => (
-  <>
-    {total ? (
-      <ul className={s.box}>
-        <li className={s.options}> Good:{good} </li>
-        <li className={s.options}> Neutral:{neutral} </li>
-        <li className={s.options}> Bad:{bad} </li>
-        <li className={s.options}> Total:{total} </li>
-        <li className={s.options}>
-          Positive feedback: {positiveFeedbackPercentage}%
-        </li>
-      </ul>
-    ) : (
-      <Notification message="No feedback given" />
-    )}
-  </>
-);
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
+  return (
+    <ul className={s.list}>
+      <li className={s.item}>Good: {good}</li>
+      <li className={s.item}>Neutral: {neutral}</li>
+      <li className={s.item}>Bad: {bad}</li>
+      <li className={s.item}>Total: {total}</li>
+      <li className={s.item}>Positive feedback: {positivePercentage}%</li>
+    </ul>
+  );
+}
 
 Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
-  positiveFeedbackPercentage: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;
